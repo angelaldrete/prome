@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+:root {
+  --primary-color: #3f51b5;
+  --secondary-color: #9c27b0;
+  --background-color: #fafafa;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1.6rem;
+  color: black;
+  background-color: var(--background-color);
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  font-size: 62.5%;
+  font-family: sans-serif;
+}
+
+main {
+  padding: 2rem;
+}
+
+h1 {
+  margin: 0;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.hero__title {
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  margin-bottom: 0.5rem;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+.hero__name {
+  color: var(--primary-color);
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+.hero__description {
+  display: block;
+  margin-top: 1rem;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin-bottom: 2.5rem;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+.hero__cta {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  padding: 1.5rem 2.5rem;
+  background-image: linear-gradient(to right bottom, var(--primary-color) 20%, var(--secondary-color));
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+.hero__cta:hover {
+  transition: all 0.2s ease-in-out;
+  color: var(--primary-color);
+  background-image: none;
+  background-color: white;
+  outline: 1px solid var(--primary-color);
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}/*# sourceMappingURL=main.css.map */
