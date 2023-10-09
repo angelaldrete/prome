@@ -1,0 +1,12 @@
+.background {
+  padding: 2rem;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  color: white;
+  background-color: var(--background-color-dark);
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

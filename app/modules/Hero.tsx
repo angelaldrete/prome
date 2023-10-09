@@ -1,5 +1,6 @@
 "use client";
 import Spline from "@splinetool/react-spline";
+import Link from "next/link";
 import React from "react";
 
 const Hero = () => {
@@ -11,16 +12,16 @@ const Hero = () => {
             Hi, I'm <span className="hero__name">Angel Aldrete</span>
           </h1>
           <p className="hero__description">
-            I'm a{" "}
+            I'm a
             <span className="hero__description--highlight">
-              <strong>Software Developer</strong>
-            </span>{" "}
-            based in{" "}
-            <span className="hero__description--highlight">Mexico</span>.
+              <strong> Software Developer </strong>
+            </span>
+            based in
+            <span className="hero__description--highlight"> Mexico</span>.
           </p>
-          <a href="#contact" className="hero__cta">
+          <Link href="#contact" className="hero__cta">
             Get in touch
-          </a>
+          </Link>
         </div>
       </div>
 
