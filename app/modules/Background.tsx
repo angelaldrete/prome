@@ -15,10 +15,10 @@ const Background = () => {
             of experience in DevOps, Mobile, and Web development, with a strong
             focus on the latter.
           </p>
+          <Link href="https://github.com/angelaldrete" className="hero__cta">
+            Github
+          </Link>
         </div>
-        <Link href="https://github.com/angelaldrete" className="hero__cta">
-          Github
-        </Link>
       </div>
     </section>
   );

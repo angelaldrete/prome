@@ -4,9 +4,43 @@
   padding-bottom: 10rem;
   color: white;
   background-color: var(--background-color-dark);
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+  }
   img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+  }
+}
+
+@include tablet {
+  .background {
+    &__info {
+      flex-direction: row;
+      img {
+        flex: 1;
+        margin-right: 2rem;
+        width: clamp(20rem, 50%, 30rem);
+      }
+    }
+    padding: 4rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    &__about-me {
+      flex: 2;
+    }
+  }
+}
+
+@include desktop {
+  .background {
+    padding: 6rem;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
   }
 }
