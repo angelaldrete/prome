@@ -28,12 +28,26 @@ html {
   font-family: sans-serif;
 }
 
+h1 {
+  margin: 0;
+}
+
+@import "mixin";
+
 main {
   padding: 2rem;
 }
 
-h1 {
-  margin: 0;
+@include tablet {
+  main {
+    padding: 4rem;
+  }
+}
+
+@include desktop {
+  main {
+    padding: 6rem;
+  }
 }
 
 @import "hero";
