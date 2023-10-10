@@ -1,0 +1,22 @@
+.projects {
+  background-color: var(--background-color-darker);
+  color: white;
+  padding: 2rem;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+
+  &__title {
+    color: var(--secondary-color);
+    font-size: clamp(2.4rem, 5vw, 5rem);
+  }
+
+  &__description {
+    margin-bottom: 4rem;
+  }
+
+  &__list {
+    list-style: none;
+    padding: unset;
+    margin: unset;
+  }
+}

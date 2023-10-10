@@ -4,6 +4,7 @@
   --secondary-color: #9c27b0;
   --background-color: #fafafa;
   --background-color-dark: #303030;
+  --background-color-darker: #222222;
 }
 
 * {
@@ -246,4 +247,23 @@ h1 {
   to {
     transform: translateX(calc(-50% - 2.5rem));
   }
+}
+.projects {
+  background-color: var(--background-color-darker);
+  color: white;
+  padding: 2rem;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+.projects__title {
+  color: var(--secondary-color);
+  font-size: clamp(2.4rem, 5vw, 5rem);
+}
+.projects__description {
+  margin-bottom: 4rem;
+}
+.projects__list {
+  list-style: none;
+  padding: unset;
+  margin: unset;
 }/*# sourceMappingURL=main.css.map */
