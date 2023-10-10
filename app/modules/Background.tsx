@@ -10,7 +10,7 @@ const Background = () => {
         <Image alt="My picture" src={myImg} quality={100} />
         <div className="background__about-me">
           <h2>About me!</h2>
-          <p>
+          <p className="background__description">
             Hey there! I'm Angel, a passionate software developer with 5+ years
             of experience in DevOps, Mobile, and Web development, with a strong
             focus on the latter.

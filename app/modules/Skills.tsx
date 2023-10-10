@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { AiFillHtml5 } from "react-icons/ai";
 import {
@@ -121,20 +122,29 @@ const Skills = () => {
       icon: <SiGrafana />,
     },
   ];
-
   return (
     <section className="skills">
       <h2 className="skills__title">Skills</h2>
-      <p className="skills_description">
+      <p className="skills__description">
         Overall skills I've gathered by professional and personal experience
       </p>
-      <ul className="skills__list">
-        {skills.map((skill, index) => (
-          <li key={index} className="skills__list-item">
-            {skill.icon}
-          </li>
-        ))}
-      </ul>
+      <div className="skills__container">
+        <ul className="skills__list">
+          {skills.map((skill, index) => (
+            <li key={index} className="skills__list-item">
+              {skill.icon}
+            </li>
+          ))}
+          {skills.map((skill, index) => (
+            <li key={index} className="skills__list-item">
+              {skill.icon}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <Link href="/CV.pdf" className="hero__cta">
+        View CV
+      </Link>
     </section>
   );
 };
