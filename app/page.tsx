@@ -3,6 +3,7 @@ import Skills from "./modules/Skills";
 import Projects from "./modules/Projects";
 import Contact from "./modules/Contact";
 import Background from "./modules/Background";
+import Footer from "./modules/Footer";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Skills />
       <Projects />
       <Contact />
+      <Footer />
     </main>
   );
 }
