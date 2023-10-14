@@ -1,9 +1,24 @@
 "use client";
 import Spline from "@splinetool/react-spline";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
+
+const MemoizedSpline = React.memo(({ scene }: { scene: string }) => (
+  <Spline scene={scene} />
+));
+
+const LazySpline = React.lazy(() => import("@splinetool/react-spline"));
 
 const Hero = () => {
+  const sceneUrl = React.useMemo(
+    () => "https://prod.spline.design/5ZTaGDXthyzCSA08/scene.splinecode", // Replace with your dynamic scene URL logic
+    []
+  );
+
+  // Ensure that the LazySpline is only used in the browser
+  const ModelComponent =
+    typeof window !== "undefined" ? LazySpline : MemoizedSpline;
+
   return (
     <section className="hero">
       <div className="hero__container">
@@ -26,7 +41,9 @@ const Hero = () => {
       </div>
 
       <div className="hero__model">
-        <Spline scene="https://prod.spline.design/5ZTaGDXthyzCSA08/scene.splinecode" />
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <ModelComponent scene={sceneUrl} />
+        </React.Suspense>
       </div>
     </section>
   );
