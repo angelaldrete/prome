@@ -46,6 +46,7 @@ const Contact = () => {
               backgroundColor: "#3f51b5",
               color: "#fff",
               padding: "1rem",
+              marginBottom: "2rem",
             }}
           >
             <p>Thanks for your message! I will get back to you soon.</p>
