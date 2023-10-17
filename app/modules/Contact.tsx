@@ -70,8 +70,10 @@ const Contact = () => {
               errors={state.errors}
             />
           </div>
-          <div className="contact__form--group">
-            <input type="submit" value="Send" disabled={state.submitting} />
+          <div className="contact__form--submit">
+            <button type="submit" disabled={state.submitting}>
+              Send
+            </button>
           </div>
         </form>
       </div>

@@ -45,11 +45,14 @@
       resize: none;
     }
 
-    input[type="submit"] {
-      display: inline-block;
+    button[type="submit"] {
+      display: block;
+      width: 100%;
       text-decoration: none;
       color: white;
       padding: 1.5rem 2.5rem;
+      border: none;
+      cursor: pointer;
       background-image: linear-gradient(
         to right bottom,
         var(--primary-color) 20%,
@@ -66,8 +69,16 @@
         outline: 1px solid var(--primary-color);
         box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
       }
-    }
+      @include tablet {
+        width: 50%;
+        margin: 0 auto;
+      }
 
+      @include desktop {
+        width: 30%;
+        margin: 0 auto;
+      }
+    }
     @include tablet {
       width: 50%;
       margin: 0 auto;
