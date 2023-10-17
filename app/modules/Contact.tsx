@@ -13,9 +13,18 @@ const Contact = () => {
     data: { "g-recaptcha-response": executeRecaptcha },
   });
 
-  if (state.succeeded) {
-    return <p>Thanks for your message. I will get back to you soon!</p>;
-  }
+  const formRef = React.useRef<HTMLFormElement>(null);
+  const [isSuccessShown, setIsSuccessShown] = React.useState(false);
+
+  React.useEffect(() => {
+    if (state.succeeded) {
+      formRef.current!.reset();
+      setIsSuccessShown(true);
+      setTimeout(() => {
+        setIsSuccessShown(false);
+      }, 5000);
+    }
+  }, [state.succeeded]);
 
   return (
     <section className="contact">
@@ -31,7 +40,18 @@ const Contact = () => {
       </div>
 
       <div className="contact__form" id="contact">
-        <form onSubmit={handleSubmit}>
+        {isSuccessShown && (
+          <div
+            style={{
+              backgroundColor: "#3f51b5",
+              color: "#fff",
+              padding: "1rem",
+            }}
+          >
+            <p>Thanks for your message! I will get back to you soon.</p>
+          </div>
+        )}
+        <form onSubmit={handleSubmit} ref={formRef}>
           <div className="contact__form--group">
             <label htmlFor="firstName">First Name</label>
             <input type="text" name="firstName" id="firstName" />
