@@ -40,6 +40,7 @@ h1 {
   align-items: center;
   height: 100vh;
   padding: 2rem;
+  min-height: 800px;
 }
 .hero__container {
   margin-bottom: 2rem;
@@ -125,6 +126,7 @@ h1 {
   padding-bottom: 10rem;
   color: white;
   background-color: var(--background-color-dark);
+  min-height: 950px;
 }
 .background__description {
   margin-bottom: 4rem;
@@ -160,6 +162,11 @@ h1 {
     flex: 2;
   }
 }
+@media (min-width: 768px) {
+  .background {
+    min-height: 600px;
+  }
+}
 @media (min-width: 1025px) {
   .background {
     padding: 6rem;
@@ -178,6 +185,7 @@ h1 {
   padding-top: 5rem;
   padding-bottom: 5rem;
   overflow: hidden;
+  min-height: 480px;
 }
 .skills__title {
   color: var(--primary-color);
@@ -255,6 +263,7 @@ h1 {
   padding: 2rem;
   padding-top: 10rem;
   padding-bottom: 10rem;
+  min-height: 760px;
 }
 .projects__title {
   color: var(--secondary-color);

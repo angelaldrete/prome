@@ -1,8 +1,9 @@
 "use client";
-import React, { Suspense } from "react";
+import React, { Suspense, useMemo } from "react";
 import Spline from "@splinetool/react-spline";
 import Link from "next/link";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { useInView } from "react-intersection-observer";
 
 enum Direction {
   Previous = "previous",
@@ -14,6 +15,42 @@ const MemoizedSpline = React.memo(({ scene }: { scene: string }) => (
 ));
 
 const LazySpline = React.lazy(() => import("@splinetool/react-spline"));
+
+const ProjectItem = ({
+  project,
+}: {
+  project: { title: string; description: string; link: string; scene: string };
+}) => {
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.25,
+    delay: 400,
+  });
+
+  const GraphicComponent =
+    typeof window !== "undefined" && inView ? LazySpline : MemoizedSpline;
+
+  return (
+    <div className="projects__item" ref={ref}>
+      {inView && (
+        <>
+          <div className="projects__item--content">
+            <h3 className="projects__item--title">{project.title}</h3>
+            <p className="projects__item--description">{project.description}</p>
+          </div>
+          <div className="projects__item--graphic">
+            <Suspense fallback={<div>Loading...</div>}>
+              <GraphicComponent scene={project.scene} />
+            </Suspense>
+          </div>
+          <Link className="hero__cta" href={project.link} target="_blank">
+            Visit
+          </Link>
+        </>
+      )}
+    </div>
+  );
+};
 
 const Projects = () => {
   const projects = React.useMemo(
@@ -73,9 +110,6 @@ const Projects = () => {
     }
   };
 
-  const GraphicComponent =
-    typeof window !== "undefined" ? LazySpline : MemoizedSpline;
-
   return (
     <section className="projects">
       <h2 className="projects__title">Projects</h2>
@@ -88,28 +122,7 @@ const Projects = () => {
           className="projects__controls--previous"
           onClick={() => handleProjectChange(Direction.Previous)}
         />
-        <div className="projects__item">
-          <div className="projects__item--content">
-            <h3 className="projects__item--title">
-              {projects[currentProject].title}
-            </h3>
-            <p className="projects__item--description">
-              {projects[currentProject].description}
-            </p>
-          </div>
-          <div className="projects__item--graphic">
-            <Suspense fallback={<div>Loading...</div>}>
-              <GraphicComponent scene={projects[currentProject].scene} />
-            </Suspense>
-          </div>
-          <Link
-            className="hero__cta"
-            href={projects[currentProject].link}
-            target="_blank"
-          >
-            Visit
-          </Link>
-        </div>
+        <ProjectItem project={projects[currentProject]} />
         <FaArrowRight
           className="projects__controls--next"
           onClick={() => handleProjectChange(Direction.Next)}
