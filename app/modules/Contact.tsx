@@ -1,11 +1,17 @@
 "use client";
 import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const Contact = () => {
-  const [state, handleSubmit] = useForm("xdoryyyp");
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
+  const [state, handleSubmit] = useForm("xdoryyyp", {
+    data: { "g-recaptcha-response": executeRecaptcha },
+  });
+
   if (state.succeeded) {
-    return <p>Thanks for joining!</p>;
+    return <p>Thanks for your message. I will get back to you soon!</p>;
   }
 
   return (
@@ -65,7 +71,7 @@ const Contact = () => {
             />
           </div>
           <div className="contact__form--group">
-            <input type="submit" value="Send" />
+            <input type="submit" value="Send" disabled={state.submitting} />
           </div>
         </form>
       </div>
