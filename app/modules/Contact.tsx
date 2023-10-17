@@ -1,7 +1,10 @@
 "use client";
 import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import {
+  useGoogleReCaptcha,
+  GoogleReCaptchaProvider,
+} from "react-google-recaptcha-v3";
 
 const Contact = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -81,4 +84,10 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+const ContactWrapper = () => (
+  <GoogleReCaptchaProvider reCaptchaKey="6Lfea6soAAAAAGhYU1i5o2wIGarZ7re7c8Ih7-Db">
+    <Contact />
+  </GoogleReCaptchaProvider>
+);
+
+export default ContactWrapper;
