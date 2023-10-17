@@ -1,6 +1,6 @@
 "use client";
 import Spline from "@splinetool/react-spline";
-import Link from "next/link";
+import { Link, animateScroll as scroll } from "react-scroll";
 import React, { Suspense } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -11,6 +11,10 @@ const MemoizedSpline = React.memo(({ scene }: { scene: string }) => (
 const LazySpline = React.lazy(() => import("@splinetool/react-spline"));
 
 const Hero = () => {
+  const scrollToTop = () => {
+    scroll.scrollToTop();
+  };
+
   const sceneUrl = React.useMemo(
     () => "https://prod.spline.design/5ZTaGDXthyzCSA08/scene.splinecode",
     []
@@ -43,7 +47,14 @@ const Hero = () => {
                 based in
                 <span className="hero__description--highlight"> Mexico</span>.
               </p>
-              <Link href="#contact" className="hero__cta">
+              <Link
+                className="hero__cta"
+                to="contact"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
                 Get in touch
               </Link>
             </div>
